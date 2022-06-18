@@ -20,12 +20,14 @@ stages:
             mavenPomFile: 'pom.xml'
             publishJUnitResults: true
             testResultsFiles: '**/surefire-reports/TEST-*.xml'
-            codeCoverageToolOption: 'JaCoCo'
             codeCoverageFailIfEmpty: true
             javaHomeOption: 'JDKVersion'
             mavenVersionOption: 'Default'
             mavenAuthenticateFeed: false
             effectivePomSkip: false
             sonarQubeRunAnalysis: false
-            checkStyleRunAnalysis: true
-            pmdRunAnalysis: true
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'mavenapp'
+            publishLocation: 'Container'
