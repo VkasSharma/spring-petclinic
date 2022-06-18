@@ -30,8 +30,8 @@ stages:
         - task: CopyFiles@2
           inputs:
             sourceFolder: $(Build.SourcesDirectory)
-            Contents: '**/*.jar'
-            TargetFolder: $(Agent.BuildDirectory)
+            Contents: 'target/*.jar'
+            TargetFolder: $(Build.ArtifactStagingDirectory)
         - task: PublishBuildArtifacts@1
           inputs:
             PathtoPublish: '$(Build.ArtifactStagingDirectory)'
